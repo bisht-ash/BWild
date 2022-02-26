@@ -77,7 +77,7 @@ CampgroundSchema.post('findOneAndDelete',async(camp)=>{
          }
     }
     catch(e){
-        console.log(e)
+        res.send(e.name);
     }
     
 })
