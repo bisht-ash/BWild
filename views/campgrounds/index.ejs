@@ -1,0 +1,66 @@
+<%layout('layouts/boilerplate')%>
+    <div class="container">
+        <div class="d-flex justify-content-center my-5">
+            <h1 class="display-1 text-center my-2 title-myHeading zoom mx-5 px-5">Campgrounds</h1>
+        </div>
+        <%let i=0%>
+        <%let done=false%>
+        <% for (let campground of campgrounds){%>
+           <% if(i%3===0){%>
+                <%done=false;%>
+                <div class="row my-3 d-flex justify-content-center">  
+                    <div class="col-sm-3 mt-3 mx-2 py-4 px-4 card text-center zoom is-index-campground">
+                        <div class="card-body">   
+                            <%if(campground.images.length){%>
+                                <img class="d-block w-100 my-3" src="<%=campground.images[0].url%>" alt="">
+                            <%}%>
+                            <h5 class="card-title zoom"><a href="/campgrounds/<%= campground._id %>?page=1&limit=2"><%= campground.title %></a></h5>
+                            <blockquote>in <b><%=campground.location%></b></blockquote>
+                            <p class="card-text"><%=campground.description%></p>
+                        </div>
+                        <div class='card-footer'>
+                            Price: $ <%=campground.price%>/night <br>
+                            Submitted by : <a class="link-dark" href="/user/<%=campground.author._id%>"><strong><%=campground.author.username%></strong></strong></a>
+                        </div>
+                    </div>
+            <% }else if(i%3===1){%>
+                <%done=false;%>
+                <div class="col-sm-3 mx-2 mt-3 py-4 px-4 card text-center zoom is-index-campground">
+                    <div class="card-body">   
+                        <%if(campground.images.length){%>
+                            <img class="d-block w-100 my-3" src="<%=campground.images[0].url%>" alt="">
+                        <%}%>
+                        <h5 class="card-title zoom"><a href="/campgrounds/<%= campground._id %>?page=1&limit=2"><%= campground.title %></a></h5>
+                        <blockquote>in <b><%=campground.location%></b></blockquote>
+                        <p class="card-text"><%=campground.description%></p>
+                    </div>
+                    <div class='card-footer'>
+                        Price: $ <%=campground.price%>/night <br>
+                        Submitted by : <a class="link-dark" href="/user/<%=campground.author._id%>"><strong><%=campground.author.username%></strong></a>
+                    </div>
+                </div>
+            <%}else{%>
+               <% done=true;%>
+                    <div class="col-sm-3 mx-2 mt-3 py-4 px-4 card text-center zoom is-index-campground">
+                        <div class="card-body">   
+                            <%if(campground.images.length){%>
+                                <img class="d-block w-100 my-3" src="<%=campground.images[0].url%>" alt="">
+                            <%}%>
+                            <h5 class="card-title zoom"><a href="/campgrounds/<%= campground._id %>?page=1&limit=2"><%= campground.title %></a></h5>
+                            <blockquote>in <b><%=campground.location%></b></blockquote>
+                            <p class="card-text"><%=campground.description%></p>
+                        </div>
+                        <div class='card-footer'>
+                            Price: $ <%=campground.price%>/night <br>
+                            Submitted by : <a class="link-dark" href="/user/<%=campground.author._id%>"><strong><%=campground.author.username%></strong></a>
+                        </div>                    
+                    </div>
+                </div>
+            <%}%>
+            <%i++%>
+        <%}%>
+        <%if(done===false){%>
+            </div>
+        <%}%>
+    </div>
+

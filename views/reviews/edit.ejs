@@ -1,0 +1,47 @@
+<%layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="/css/stars.css"/>
+<div class="row my-5">
+    <div class="col-8 offset-2 is-form">
+        <h1 class="text-center my-5">Review</h1>
+        <form class="container needs-validation" action="/campgrounds/<%=camp_id%>/reviews/<%=review.id%>?_method=PUT&page=<%=page%>&limit=<%=limit%>" method="post" novalidate>
+            <div class="row mt-3 mx-5">
+                <div class="col">
+                    <label class="form-label">Rating</label>
+                    <fieldset class="starability-basic">
+                        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="1" checked aria-label="No rating." />
+                        <input type="radio" id="first-rate1" name="rating" value="1" >
+                        <label for="first-rate1" title="Terrible">1 star</label>
+                        <input type="radio" id="first-rate2" name="rating" value="2">
+                        <label for="first-rate2" title="Not good">2 stars</label>
+                        <input type="radio" id="first-rate3" name="rating" value="3">
+                        <label for="first-rate3" title="Average">3 stars</label>
+                        <input type="radio" id="first-rate4" name="rating" value="4">
+                        <label for="first-rate4" title="Very good">4 stars</label>
+                        <input type="radio" id="first-rate5" name="rating" value="5">
+                        <label for="first-rate5" title="Amazing">5 stars</label>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row mt-3 mx-5">
+                <div class="col">
+                    <label class="form-label" for="reviewText">Comments</label>
+                    <textarea class="form-control" name="text" id="reviewText" cols="" rows="4"><%=review.text%></textarea>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center my-3 mx-5">
+                <div class="col-6 text-end">
+                    <button type="submit" class='btn btn-success form-control text-center col-3' style="width: 8rem;">Submit</button>
+                </div>
+                <div class="col-6 text-start">   
+                    <a href="/campgrounds/<%=camp_id%>?page=<%=page%>&limit=<%=limit%>" class='btn btn-info form-control text-center col-3' style="width: 8rem;">Back</a>
+                </div>
+                
+            </div>
+        </form>
+        <div class="d-flex justify-content-center my-3 mx-5">
+            
+        </div>
+
+    </div>
+</div>
+    

@@ -1,0 +1,64 @@
+<%layout('layouts/boilerplate')%>
+<div class="row my-5">
+    <div class="col-10 offset-1 is-form">
+        <h1 class="text-center my-5">Create a new Campground</h1>
+        <form class= 'container needs-validation' action="/campgrounds" method="POST" enctype="multipart/form-data" novalidate>
+            <div class='row mt-3 mx-5'>
+                <div class="col-lg-6">
+                    <label class = 'form-label' for="title">Title</label>
+                    <input class='form-control' type="text" id="title" name="title" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a name.
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <label class= 'form-label' for="location">Location</label>
+                    <input class='form-control' type="text" id="location" name="location" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a valid location.
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3 mx-5">
+                <div class="col-lg-9">
+                    <label for="image" class="form-label">Image</label>
+                    <input class="form-control" type="file" id="image" name="image" multiple>
+                </div>  
+                <div class="col-lg-3">
+                    <label for="price" class="form-label">Price</label>
+                    <div class="input-group mb-3 has-validation">
+                        <span class="input-group-text">$</span>
+                        <input type="number" id="price" name="price" class="form-control" aria-label="Amount (to the nearest dollar)" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide a valid price.
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="row mt-3 mx-5">
+                <div>
+                    <label for="description" class="form-label">Description</label>
+                    <Textarea class="form-control" placeholder="Add description here" id="description" name="description" row=10 col=5></Textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="my-5">
+                    <button type="submit" class='btn btn-outline-dark form-control'>Add Campground</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+    

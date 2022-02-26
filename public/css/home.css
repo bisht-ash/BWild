@@ -1,0 +1,9 @@
+body{
+    background-image: linear-gradient(rgb(0,0,0,0.6),rgb(0,0,0,0.6)), url('/image/home.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.lead{
+    color: aliceblue;
+}

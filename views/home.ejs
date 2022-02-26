@@ -1,0 +1,24 @@
+<%layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="/css/home.css">
+<main class="pb-5">
+<div class="d-flex justify-content-center mt-5">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container mt-5">
+          <h1 class="display-1 lead">BWild</h1>
+          <p class="lead">Welcome to BWild, view campgrounds from all over the world and add beautiful places in the wild for the world to see.</p>
+          <p class="lead text-center">"Be Wild, Live Free"</p>
+        </div>
+      </div>
+</div>
+</main>
+
+<div class="row">
+  <div class="jumbotron jumbotron-fluid col-6 offset-3">
+    <div id="map" class="container mt-5" style=" height:350px;"></div>
+  </div>
+</div>
+<script>
+  const mapToken= '<%-process.env.MAPBOX_TOKEN%>';
+  const campgrounds='<%-JSON.stringify(campgrounds)%>';
+</script>
+<script src="/js/clusterMap.js"></script>

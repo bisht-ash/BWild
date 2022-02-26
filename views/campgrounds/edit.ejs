@@ -1,0 +1,100 @@
+<%layout('layouts/boilerplate')%>
+<div class="row my-5">
+    <div class="col-10 offset-1 is-form">
+        <h1 class="text-center my-5">Edit Campground</h1>
+        <form class="needs-validation" action="/campgrounds/<%=campground._id%>?_method=PUT&page=<%=page%>&limit=<%=limit%>" method="post" enctype="multipart/form-data" novalidate>
+            <div class='row mt-3 mx-5'>
+                <div class="col-lg-6">
+                    <label class = 'form-label' for="title">Title</label>
+                    <input class='form-control' type="text" id="title" name="title" value="<%=campground.title%>" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a name.
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <label class= 'form-label' for="location">Location</label>
+                    <input class='form-control' type="text" id="location" name="location" value="<%=campground.location%>" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a valid location.
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3 mx-5">
+                <div class="col-lg-9">
+                    <label for="image" class="form-label">Add more image(s)</label>
+                    <input class="form-control" type="file" id="image" name="image" multiple>
+                </div>  
+                <div class="col-lg-3">
+                    <label for="price" class="form-label">Price</label>
+                    <div class="input-group mb-3 has-validation">
+                        <span class="input-group-text">$</span>
+                        <input type="number" id="price" name="price" class="form-control" aria-label="Amount (to the nearest dollar)" value=<%=campground.price%> required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide a valid price.
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="row mt-3 mx-5">
+                <div>
+                    <label for="description" class="form-label">Description</label>
+                    <Textarea class="form-control" placeholder="Add description here" id="description" name="description" row=10 col=5><%=campground.description%></Textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center row mt-5 mx-5">
+                <div class="col-lg-4">
+                    <%if(campground.images.length){%>
+                        <div id="carouselControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <%campground.images.forEach((image,i)=>{%>
+                                    <div class="carousel-item <%=((i===0)?  'active':'') %>">
+                                        <div class="text-center">
+                                            <img class="img-thumbnail" src="<%=image.thumbnail%>" alt="">
+                                        </div>
+                                        <div class="text-center">
+                                            <input type="checkbox" name="deleteImages[]" id="images_<%=i%>" value="<%=image.filename%>">
+                                            <label for="images_<%=i%>">DELETE?</label>
+                                        </div>
+                                    </div>
+                                <%})%>
+                            </div>
+                            <% if(campground.images.length >1){ %>  
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                            <% } %> 
+                        </div>
+                    <%}%>
+                </div>
+                
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="my-5">
+                    <button type="submit" class='btn btn-outline-dark form-control'>Update</button>
+                </div>
+                <div class="my-5">
+                    <a class="btn btn-outline-dark" href="/campgrounds/<%= campground._id%>?&page=<%=page%>&limit=<%=limit%>">Back To Campground</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+    
+    
