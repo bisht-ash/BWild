@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Review =require('./review')
 const User = require('./user');
-const {wrapAsync}=require('../utils/utilities');
+const appError=require('../utils/appError')
 require('dotenv').config();
 const Schema = mongoose.Schema;
 const cloudinary = require('cloudinary').v2;
@@ -17,7 +17,10 @@ const ImageSchema =new Schema({
 const option = {toJSON : {virtuals : true}};
 
 ImageSchema.virtual('thumbnail').get(function(){
-    return this.url.replace('/upload/','/upload/w_300/');
+    return this.url.replace('/upload/','/upload/w_300,h_300,c_pad,b_grey/');
+})
+ImageSchema.virtual('standardHW').get(function(){
+    return this.url.replace('/upload/','/upload/w_350,h_350,c_pad,b_grey/');
 })
 const CampgroundSchema = new Schema({
     title: {
@@ -77,7 +80,7 @@ CampgroundSchema.post('findOneAndDelete',async(camp)=>{
          }
     }
     catch(e){
-        res.send(e.name);
+        throw new appError('Internal Error',500);
     }
     
 })
