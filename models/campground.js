@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Review =require('./review')
 const User = require('./user');
+const {wrapAsync}=require('../utils/utilities');
 require('dotenv').config();
 const Schema = mongoose.Schema;
 const cloudinary = require('cloudinary').v2;
@@ -64,16 +65,21 @@ CampgroundSchema.virtual('properties.HTML').get(function(){
     return `<a href=campgrounds/${this._id}?page=1&limit=2>${this.title}</a>`
 })
 
-CampgroundSchema.post('findOneAndDelete',async function(camp){
-    console.log(camp.reviews.length);
-    if(camp.reviews.length!==0){
-       await Review.deleteMany({_id : {$in : camp.reviews}});
+CampgroundSchema.post('findOneAndDelete',async(camp)=>{
+    try{
+        if(camp.reviews.length!==0){
+            await Review.deleteMany({_id : {$in : camp.reviews}});
+         }
+         if(camp.images.length!==0){
+             camp.images.forEach(async (img)=>{
+                 await cloudinary.uploader.destroy(img.filename);
+             })   
+         }
     }
-    if(camp.images.length!==0){
-        camp.images.forEach(async (img)=>{
-            await cloudinary.uploader.destroy(img.filename);
-        })   
+    catch(e){
+        console.log(e)
     }
+    
 })
 
 
