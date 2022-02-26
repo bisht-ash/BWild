@@ -1,10 +1,10 @@
 <%layout('layouts/boilerplate')%>
 <link rel="stylesheet" href="/css/stars.css"/>
-<div class="row my-5">
-    <div class="col-8 offset-2 is-form">
+<div class="row my-5 justify-content-center">
+    <div class="col-8 is-form">
         <h1 class="text-center my-5">Review</h1>
         <form class="container needs-validation" action="/campgrounds/<%=camp_id%>/reviews/<%=review.id%>?_method=PUT&page=<%=page%>&limit=<%=limit%>" method="post" novalidate>
-            <div class="row mt-3 mx-5">
+            <div class="row mt-3">
                 <div class="col">
                     <label class="form-label">Rating</label>
                     <fieldset class="starability-basic">
@@ -22,13 +22,13 @@
                     </fieldset>
                 </div>
             </div>
-            <div class="row mt-3 mx-5">
+            <div class="row mt-3">
                 <div class="col">
                     <label class="form-label" for="reviewText">Comments</label>
                     <textarea class="form-control" name="text" id="reviewText" cols="" rows="4"><%=review.text%></textarea>
                 </div>
             </div>
-            <div class="d-flex justify-content-center my-3 mx-5">
+            <div class="d-flex justify-content-center my-3">
                 <div class="col-6 text-end">
                     <button type="submit" class='btn btn-success form-control text-center col-3' style="width: 8rem;">Submit</button>
                 </div>
@@ -38,7 +38,7 @@
                 
             </div>
         </form>
-        <div class="d-flex justify-content-center my-3 mx-5">
+        <div class="d-flex justify-content-center my-3">
             
         </div>
 
