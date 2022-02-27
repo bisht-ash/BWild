@@ -2,8 +2,8 @@ mapboxgl.accessToken = mapToken;
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/outdoors-v11',
-        center: [-103.5917, 40.6699],
-        zoom: 1
+        center: [78.9629, 20.5937],
+        zoom: 3
     });
 
 const camps=JSON.parse(campgrounds);

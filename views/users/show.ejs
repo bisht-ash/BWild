@@ -18,8 +18,8 @@
                         
                         <div class="col-sm-3 mt-3 mx-2 py-4 px-4 card text-center zoom" style="width: 26rem; background-color: #e5e5e5;">
                             <a href="/campgrounds/<%= campground._id %>?page=1&limit=5">
-                                <%if(campground.image){%>
-                                    <img src=<%=campground.image[0].url%> class="card-img-top" alt="img">
+                                <%if(campground.images.length){%>
+                                    <img src=<%=campground.images[0].url%> class="card-img-top" alt="img">
                                 <%}%>
                                 <div class="card-body">
                                     <h5 class="card-title zoom"><a href="/campgrounds/<%= campground._id %>?page=1&limit=5"><%= campground.title %></a></h5>
@@ -36,8 +36,8 @@
                     <%done=false;%>
                     <div class="col-sm-3 mx-2 mt-3 py-4 px-4 card text-center zoom" style="width: 26rem; background-color: #e5e5e5;">
                         <a href="/campgrounds/<%= campground._id %>?page=1&limit=5">
-                            <%if(campground.image){%>
-                                <img src=<%=campground.image[0].url%> class="card-img-top" alt="img">
+                            <%if(campground.images.length){%>
+                                <img src=<%=campground.images[0].url%> class="card-img-top" alt="img">
                             <%}%>
                             <div class="card-body">
                                 <h5 class="card-title zoom"><a href="/campgrounds/<%= campground._id %>?page=1&limit=5"><%= campground.title %></a></h5>
@@ -54,8 +54,8 @@
                    <% done=true;%>
                         <div class="col-sm-3 mx-2 mt-3 py-4 px-4 card text-center zoom" style="width: 26rem; background-color: #e5e5e5;">
                             <a href="/campgrounds/<%= campground._id %>?page=1&limit=5">
-                                <%if(campground.image){%>
-                                    <img src=<%=campground.image[0].url%> class="card-img-top" alt="img">
+                                <%if(campground.images.length){%>
+                                    <img src=<%=campground.images[0].url%> class="card-img-top" alt="img">
                                 <%}%>
                                 <div class="card-body">
                                     <h5 class="card-title zoom"><a href="/campgrounds/<%= campground._id %>?page=1&limit=5"><%= campground.title %></a></h5>
